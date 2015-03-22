@@ -1,0 +1,8 @@
+/*Give sizes to the canvas*/
+#canvas {
+    border: 1px solid black;
+    width: 1300px;
+    height: 600px;
+    margin: 5px auto;
+    display: block;
+}
