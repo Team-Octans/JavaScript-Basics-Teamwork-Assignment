@@ -1,8 +1,14 @@
 /*Give sizes to the canvas*/
-#canvas {
+body {
+	background-color: darkblue;	/* for now */
+}
+
+canvas {
     border: 1px solid black;
-    width: 1300px;
-    height: 600px;
-    margin: 5px auto;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    margin-top:20px;
     display: block;
+    background-color: white;	/* for now */
 }
