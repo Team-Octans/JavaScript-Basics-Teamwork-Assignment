@@ -7,9 +7,13 @@ var canvas,
     cHeight,
     stage,
     spriteSheet,
-    animation,
+    targetAnimation,
     targetXPos,
-    targetYPos;
+    targetYPos,
+    targetSpeedX,
+    targetSpeedY,
+    targetWidth,
+    targetHeight;
 
 //Initialize the global variables and call the mainDraw() function
 function init(){
@@ -22,8 +26,12 @@ function init(){
 
     ctx     = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
                                        // We draw with this object
-    targetXPos = 100;
-    targetYPos = 100;
+    targetXPos   = 60;
+    targetYPos   = 150;
+    targetSpeedX = 20;
+    targetSpeedY = 20;
+    targetWidth  = 48,
+    targetHeight = 48;
 
     mainDraw();
 }
@@ -52,5 +60,5 @@ function mainDraw() {
     // Add ticker
     createjs.Ticker.setFPS(15);
     createjs.Ticker.addEventListener('tick', stage);
-    //createjs.Ticker.addEventListener('tick', ticker);
+    createjs.Ticker.addEventListener('tick', ticker);
 }

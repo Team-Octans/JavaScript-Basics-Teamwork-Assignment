@@ -7,33 +7,35 @@ function createTarget()
         "animations": { "target": [0,0] }
     });
 
-    animation = new createjs.Sprite(spriteSheet, "target");
-    animation.regX = 20;
-    animation.regY = 20;
-    animation.x = targetXPos;
-    animation.y = targetYPos;
-    animation.gotoAndPlay("target");
-    stage.addChildAt(animation,1);
+    targetAnimation = new createjs.Sprite(spriteSheet, "target");
+    targetAnimation.regX = 20;
+    targetAnimation.regY = 20;
+    targetAnimation.x = targetXPos;
+    targetAnimation.y = targetYPos;
+    targetAnimation.gotoAndPlay("target");
+    stage.addChildAt(targetAnimation,1);
 }
 
-//function ticker()
-//{
-//    //Move the target
-//    if(targetXPos < cWidth && targetXPos > 0)
-//    {
-//        targetXPos += 1.5;
-//    } else
-//    {
-//        targetXPos += 1.5* (-1);
-//    }
-//    if(targetYPos < cHeight && targetYPos > 0)
-//    {
-//        targetYPos += 1.5;
-//    } else
-//    {
-//        targetYPos += 1.5* (-1);
-//    }
-//
-//    animation.x = targetXPos;
-//    animation.y = targetYPos;
-//}
+function ticker()
+{
+    //Move the target
+    if(targetXPos < (cWidth - targetWidth/2) && targetXPos > targetWidth/2)
+    {
+        targetXPos += targetSpeedX;
+    } else
+    {
+        targetSpeedX = targetSpeedX * (-1);
+        targetXPos += targetSpeedX;
+    }
+    if(targetYPos < (cHeight - targetHeight/2)&& targetYPos > targetHeight/2)
+    {
+        targetYPos += targetSpeedY;
+    } else
+    {
+        targetSpeedY = targetSpeedY * (-1);
+        targetYPos += targetSpeedY;
+    }
+
+    targetAnimation.x = targetXPos;
+    targetAnimation.y = targetYPos;
+}
