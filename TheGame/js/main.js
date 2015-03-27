@@ -6,6 +6,7 @@ var canvas,
     cWidth,
     cHeight,
     stage,
+    queue,
     spriteSheet,
     targetAnimation,
     targetXPos,
@@ -17,23 +18,32 @@ var canvas,
 
 //Initialize the global variables and call the mainDraw() function
 function init(){
-    canvas  = document.getElementById('canvas');
-    cWidth  = canvas.width;
+    canvas = document.getElementById('canvas');
+    cWidth = canvas.width;
     cHeight = canvas.height;
     console.log(cWidth);
     console.log(cHeight);
 
-
     ctx     = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
                                        // We draw with this object
+
+    queue = new createjs.LoadQueue(false);
+    queue.installPlugin(createjs.Sound);
+    queue.on('complete', mainDraw, this);
+    queue.loadManifest([
+        {id: 'bang', src: 'resources/audio/Gun_Shot.mp3'},
+        {id: 'eject', src: 'resources/audio/Eject.mp3'},
+        {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
+        {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'}
+    ]);
+
     targetXPos   = 60;
     targetYPos   = 150;
     targetSpeedX = 20;
     targetSpeedY = 20;
-    targetWidth  = 48,
+    targetWidth  = 48;
     targetHeight = 48;
 
-    mainDraw();
 }
 //Call the init() function when it loads
 window.addEventListener('load', init);
@@ -48,13 +58,10 @@ function mainDraw() {
 
     //Create a Stage object to manipulate the canvas.
     stage = new createjs.Stage("canvas");
-    var bgImg = new createjs.Bitmap("resources/pictures/backgroundImg.jpg");
+    var bgImg = new createjs.Bitmap(queue.getResult('bgImg'));
     stage.addChild(bgImg);
 
-    //Add any new child here
-    //...
-
-    // Create target
+    createCrosshair();
     createTarget();
 
     // Add ticker
