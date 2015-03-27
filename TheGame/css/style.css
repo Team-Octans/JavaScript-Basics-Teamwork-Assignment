@@ -1,4 +1,9 @@
 /*Give sizes to the canvas*/
+@font-face {
+    font-family: Chunk;
+    src: url('../resources/fonts/Chunkfive.ttf');
+}
+
 body {
 	background-color: darkblue;	/* for now */
 }

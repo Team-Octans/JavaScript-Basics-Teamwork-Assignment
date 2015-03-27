@@ -67,6 +67,8 @@ function mainDraw() {
     stage.addChild(bgImg);
 
     drawInitialBullets(); // bottom-right bullets
+    drawClock();
+    drawScore();
     createCrosshair();
     createTarget();
 
