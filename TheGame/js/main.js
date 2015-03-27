@@ -24,7 +24,7 @@ function init(){
     console.log(cWidth);
     console.log(cHeight);
 
-    ctx     = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
+    ctx = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
                                        // We draw with this object
 
     queue = new createjs.LoadQueue(false);
@@ -33,16 +33,18 @@ function init(){
     queue.loadManifest([
         {id: 'bang', src: 'resources/audio/Gun_Shot.mp3'},
         {id: 'eject', src: 'resources/audio/Eject.mp3'},
+        {id: 'empty', src: 'resources/audio/Empty.mp3'},
+        {id: 'reload', src: 'resources/audio/Reload.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
         {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
         {id: 'bullet', src: 'resources/pictures/bullet.png'}
     ]);
 
-    targetXPos   = 60;
-    targetYPos   = 150;
-    targetSpeedX = 20;
-    targetSpeedY = 20;
-    targetWidth  = 48;
+    targetXPos = 60;
+    targetYPos = 150;
+    targetSpeedX = 5;
+    targetSpeedY = 5;
+    targetWidth = 48;
     targetHeight = 48;
 
 }
@@ -72,4 +74,8 @@ function mainDraw() {
     createjs.Ticker.timingMode = createjs.Ticker.RAF;   // smoother
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', ticker);
+}
+
+function doNothing(event) { //Blocks the context menu from appearing
+    event.preventDefault();
 }
