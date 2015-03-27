@@ -24,7 +24,7 @@ function init(){
     console.log(cWidth);
     console.log(cHeight);
 
-    canvas.oncontextmenu = blockContextMenu; // blocks context menu in canvas
+    canvas.oncontextmenu = function(event) { event.preventDefault() }; // blocks context menu in canvas
 
     ctx = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
                                        // We draw with this object
@@ -66,7 +66,7 @@ function mainDraw() {
     var bgImg = new createjs.Bitmap(queue.getResult('bgImg'));
     stage.addChild(bgImg);
 
-    drawInitialBullets(stage); // bottom-right bullets 
+    drawInitialBullets(); // bottom-right bullets
     createCrosshair();
     createTarget();
 
@@ -75,8 +75,4 @@ function mainDraw() {
     createjs.Ticker.timingMode = createjs.Ticker.RAF;   // smoother
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', ticker);
-}
-
-function blockContextMenu(event) { //Blocks the context menu from appearing
-    event.preventDefault();
 }

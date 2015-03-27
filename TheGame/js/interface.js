@@ -1,15 +1,21 @@
-function drawInitialBullets(stage) {
-	var bulletGroup = [];
-	var horizontalSpace = 50;
-	for (var i = 0; i < 6; i++) {
-		var bullet = new createjs.Bitmap("resources/pictures/bullet.png");
-		bullet.x = stage.canvas.width - horizontalSpace;
-		bullet.y = stage.canvas.height - 100;
-		horizontalSpace = horizontalSpace + 20;
-		bulletGroup.push(bullet);
-	}
+var magazine,
+    capacity = 6,
+    bullet,
+    horizontalSpace;
 
-	for (var i in bulletGroup) {
-		stage.addChild(bulletGroup[i]);
-	}
+function drawInitialBullets() {
+    magazine = new createjs.Container();
+    loadGun();
+    stage.addChild(magazine);
+}
+
+function loadGun() {
+    horizontalSpace = 50;
+    for (var i = 0; i < capacity; i++) {
+        bullet = new createjs.Bitmap(queue.getResult('bullet'));
+        bullet.x = stage.canvas.width - horizontalSpace;
+        bullet.y = stage.canvas.height - 100;
+        horizontalSpace += 20;
+        magazine.addChild(bullet);
+    }
 }
