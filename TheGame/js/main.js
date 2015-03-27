@@ -34,7 +34,8 @@ function init(){
         {id: 'bang', src: 'resources/audio/Gun_Shot.mp3'},
         {id: 'eject', src: 'resources/audio/Eject.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
-        {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'}
+        {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
+        {id: 'bullet', src: 'resources/pictures/bullet.png'}
     ]);
 
     targetXPos   = 60;
@@ -61,11 +62,14 @@ function mainDraw() {
     var bgImg = new createjs.Bitmap(queue.getResult('bgImg'));
     stage.addChild(bgImg);
 
+    drawInitialBullets(stage); // bottom-right bullets 
     createCrosshair();
     createTarget();
+    
 
     // Add ticker
-    createjs.Ticker.setFPS(15);
+    createjs.Ticker.setFPS(60); // smoother fps
+    createjs.Ticker.timingMode = createjs.Ticker.RAF;   // smoother
     createjs.Ticker.addEventListener('tick', stage);
     createjs.Ticker.addEventListener('tick', ticker);
 }
