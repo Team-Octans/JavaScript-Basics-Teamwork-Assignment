@@ -7,8 +7,13 @@ var canvas,
     cHeight,
     stage,
     queue,
-    spriteSheet,
+    centerSpriteSheet,
+    leftToRightSpriteSheet,
+    rightT0LeftSpriteSheet,
+    deadSpriteSheet,
+    targetIsDead_f,
     targetAnimation,
+    targetDeadAnimation,
     targetXPos,
     targetYPos,
     targetSpeedX,
@@ -44,10 +49,11 @@ function init(){
 
     targetXPos = 60;
     targetYPos = 150;
-    targetSpeedX = 5;
-    targetSpeedY = 5;
-    targetWidth = 48;
-    targetHeight = 48;
+    targetSpeedX = 2;
+    targetSpeedY = 2;
+    targetWidth = 64;
+    targetHeight = 64;
+    targetIsDead_f = false;
 
 }
 //Call the init() function when it loads

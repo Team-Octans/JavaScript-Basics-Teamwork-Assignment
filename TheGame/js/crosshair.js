@@ -14,6 +14,7 @@ function createCrosshair() {
 function handleClick(event) {
     if((event.nativeEvent.button === 0) && (Date.now() - lastShot > shotCooldown)) { //Left click
         fire();
+        checkTargetHit();
     }
     else if ((event.nativeEvent.button === 2) && (magazine.children.length === 0)) { //Right click
         createjs.Sound.play('reload');
