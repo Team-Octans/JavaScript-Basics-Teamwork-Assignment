@@ -2,28 +2,28 @@ function createTarget()
 {
     //setting the target
     centerSpriteSheet = new createjs.SpriteSheet({
-        "images": ['resources/pictures/target2Bird.png'],
+        "images": [queue.getResult('bird')],
         "frames": {"width": targetWidth, "height": targetHeight},
         "framerate": 15,
         "animations": { "target": [12,15] }
     });
     leftToRightSpriteSheet = new createjs.SpriteSheet({
-        "images": ['resources/pictures/target2Bird.png'],
+        "images": [queue.getResult('bird')],
         "frames": {"width": targetWidth, "height": targetHeight},
         "framerate": 15,
         "animations": { "target": [4,7] }
     });
     rightT0LeftSpriteSheet = new createjs.SpriteSheet({
-        "images": ['resources/pictures/target2Bird.png'],
+        "images": [queue.getResult('bird')],
         "frames": {"width": targetWidth, "height": targetHeight},
         "framerate": 15,
         "animations": {"target": [0,3]}
     });
     deadSpriteSheet = new createjs.SpriteSheet({
-        "images": ['resources/pictures/targetDie.png'],
+        "images": [queue.getResult('dead')],
         "frames": {"width": 100, "height": 100},
         "framerate": 5,
-        "animations": { "target": [0,11, ]}
+        "animations": { "target": [0,11]}
     });
 
     targetAnimation = new createjs.Sprite(centerSpriteSheet, "target");

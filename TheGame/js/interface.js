@@ -1,7 +1,7 @@
 var magazine,
     capacity = 6,
     bullet,
-    horizontalSpace;
+    horizontalSpace,
     clock;
 
 function drawInitialBullets() {

@@ -44,7 +44,9 @@ function init(){
         {id: 'reload', src: 'resources/audio/Reload.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
         {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
-        {id: 'bullet', src: 'resources/pictures/bullet.png'}
+        {id: 'bullet', src: 'resources/pictures/bullet.png'},
+        {id: 'bird', src: 'resources/pictures/target2Bird.png'},
+        {id: 'dead', src: 'resources/pictures/targetDie.png'}
     ]);
 
     targetXPos = 60;
