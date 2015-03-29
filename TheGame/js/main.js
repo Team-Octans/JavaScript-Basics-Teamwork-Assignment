@@ -73,6 +73,9 @@ function mainDraw() {
     bgImg.scaleY = 0.9;
     stage.addChild(bgImg);
 
+    killCount = 0;
+    shotCount = 0;
+
     drawInitialBullets(); // bottom-right bullets
     drawClock();
     drawScore();

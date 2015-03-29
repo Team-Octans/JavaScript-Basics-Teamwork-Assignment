@@ -1,3 +1,5 @@
+var killCount;
+
 function createTarget()
 {
     //setting the target
@@ -107,6 +109,7 @@ function checkTargetHit(){
         stage.removeChild(targetAnimation);
         enemyDeath();
         playerScore = playerScore + 100;
+        killCount = killCount + 1;
         createjs.Sound.play('die');
         setTimeout(
             function(){

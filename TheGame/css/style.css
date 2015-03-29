@@ -18,6 +18,6 @@ canvas {
     border: 1px solid black;
     margin: auto;
     margin-top:20px;
-    display: block;
+    display: block;z
     background-color: black;	/* for now */
 }

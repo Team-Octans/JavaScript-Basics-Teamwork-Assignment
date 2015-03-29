@@ -28,7 +28,7 @@ function drawClock() {
         seconds,
         minutes;
 
-    clock = new Date("January 1, 2015 00:02:00");
+    clock = new Date("January 1, 2015 00:00:04");
     
     function updateClock() {
         stage.removeChild(clockText, clockTextClone);
@@ -42,6 +42,7 @@ function drawClock() {
             clockTextClone.outline = false;
             clockTextClone.color = "white";
             stage.addChild(clockText,clockTextClone);
+            gameOverScreen();
         }
         else {
             clock.setSeconds(clock.getSeconds()-1);
@@ -70,7 +71,7 @@ function drawScore() {
     var playerScoreTextClone;
 
     function updateScore() {
-        stage.removeChild(playerScoreText,playerScoreTextClone);
+        stage.removeChild(playerScoreText, playerScoreTextClone);
         playerScoreText = new createjs.Text("Score: " + playerScore, "32px Chunk", "black");
         playerScoreText.x = 250;
         playerScoreText.y = stage.canvas.height - 70;

@@ -2,7 +2,8 @@
 
 var crosshair,
     shotCooldown = 500,
-    lastShot = Date.now();
+    lastShot = Date.now(),
+    shotCount;
 
 function createCrosshair() {
     crosshair = new createjs.Bitmap(queue.getResult('crosshair'));
@@ -34,6 +35,7 @@ function fire() {
         lastShot = Date.now();
         magazine.removeChildAt(magazine.children.length - 1);
         checkTargetHit();
+        shotCount = shotCount + 1;
     }
     else {
         createjs.Sound.play('empty');
