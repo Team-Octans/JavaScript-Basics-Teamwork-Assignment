@@ -2,7 +2,7 @@ var magazine,
     capacity = 6,
     bullet,
     horizontalSpace,
-    clock
+    clock,
     playerScore = 0;
 
 function drawInitialBullets() {
@@ -31,7 +31,7 @@ function drawClock() {
     clock = new Date("January 1, 2015 00:02:00");
     
     function updateClock() {
-        stage.removeChild(clockText,clockTextClone);
+        stage.removeChild(clockText, clockTextClone);
 
         if (seconds == 0 && minutes == "00") {
             clockText = new createjs.Text("GAME OVER!", "32px Chunk", "black");

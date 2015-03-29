@@ -11,7 +11,7 @@ function drawMainMenu() {
 	menuBackground.scaleY = 0.9;
 	stage.addChild(menuBackground);
 
-	var menuCrosshair = new createjs.Bitmap("resources/pictures/crosshair.png");
+	var menuCrosshair = new createjs.Bitmap(queue.getResult('crosshair'));
 	menuCrosshair.scaleX = 0.6;
 	menuCrosshair.scaleY = 0.6;
    	menuCrosshair.x = -9999;
@@ -60,7 +60,7 @@ function drawMainMenu() {
 		var hitArea = new createjs.Shape();
 		hitArea.graphics.beginFill("#000").drawRect(0, 0, 
 			tempBtn.getMeasuredWidth() + 50, 
-			tempBtn.getMeasuredHeight()) + 20;
+			tempBtn.getMeasuredHeight() + 20);
 		
 		tempBtn.hitArea = hitArea;
 		stage.addChild(tempBtn);
