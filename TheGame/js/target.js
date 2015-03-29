@@ -96,13 +96,17 @@ function checkTargetHit(){
     var distX = Math.abs(shotX - spriteX);
     var distY = Math.abs(shotY - spriteY);
 
-    // Anywhere in the body or head is a hit - but not the wings
-    if((distX < 50 && distY < 50) && magazine.children.length !== 0) {
-        targetIsDead_f = true;
-        playerScore = playerScore + 100;
-        createjs.Sound.play('die');
-    }else {
-        playerScore = playerScore - 50;
-    }
+    // Hit the bird.
+    if(magazine.children.length !== 0) {
+        if(distX < 50 && distY < 50){
 
+            targetIsDead_f = true;
+            playerScore = playerScore + 100;
+            createjs.Sound.play('die');
+        }else {
+            if(playerScore>0) {
+                playerScore = playerScore - 50;
+            }
+        }
+    }
 }
