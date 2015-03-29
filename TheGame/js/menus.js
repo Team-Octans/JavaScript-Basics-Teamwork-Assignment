@@ -91,3 +91,19 @@ function drawMainMenu() {
 	createjs.Ticker.timingMode = createjs.Ticker.RAF;
  	createjs.Ticker.setFPS(60);
 }
+
+function loadingScreen() {
+	var loadingStage = new createjs.Stage("canvas");
+	var loadProgressLabel = new createjs.Text("LOADING","50px Chunk","black");
+	loadProgressLabel.lineWidth = 200;
+	loadProgressLabel.textAlign = "center";
+	loadProgressLabel.x = loadingStage.canvas.width/2;
+	loadProgressLabel.y = loadingStage.canvas.height/2;
+
+	var pleaseWaitLabel = new createjs.Text("Please wait...", "24px Chunk", "black");
+	pleaseWaitLabel.x = loadProgressLabel.x - 80;
+	pleaseWaitLabel.y = loadProgressLabel.y + 100;
+
+	loadingStage.addChild(loadProgressLabel,pleaseWaitLabel);
+	loadingStage.update();
+}

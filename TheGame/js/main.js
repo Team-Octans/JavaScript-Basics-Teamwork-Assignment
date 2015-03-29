@@ -32,6 +32,7 @@ function init(){
 
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
+    queue.on('progress', loadingScreen, this);
     queue.on('complete', drawMainMenu, this);
     queue.loadManifest([
         {id: 'bgMusic', src: 'resources/audio/MusicBG.mp3'},
