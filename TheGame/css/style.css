@@ -1,7 +1,12 @@
 /*Give sizes to the canvas*/
 @font-face {
-    font-family: Chunk;
-    src: url('../resources/fonts/Chunkfive.ttf');
+    font-family: 'Chunk';
+    src: url('../resources/fonts/Chunkfive-webfont.eot');
+    src: url('../resources/fonts/Chunkfive-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../resources/fonts/Chunkfive-webfont.woff2') format('woff2'),
+         url('../resources/fonts/Chunkfive-webfont.woff') format('woff'),
+         url('../resources/fonts/Chunkfive-webfont.ttf') format('truetype'),
+         url('../resources/fonts/Chunkfive-webfont.svg#chunkfiveroman') format('svg');
 }
 
 body {
