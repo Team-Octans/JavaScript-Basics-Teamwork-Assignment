@@ -6,9 +6,9 @@ function drawMainMenu() {
 
 	createjs.Sound.play('bgMusic');
 
-	var menuBackground = new createjs.Bitmap("resources/pictures/backgroundImg.jpg");
-	menuBackground.scaleX = 1;
-	menuBackground.scaleY = 1;
+	var menuBackground = new createjs.Bitmap("resources/pictures/background-2.jpg");
+	menuBackground.scaleX = 0.8;
+	menuBackground.scaleY = 0.9;
 	stage.addChild(menuBackground);
 
 	var menuCrosshair = new createjs.Bitmap("resources/pictures/crosshair.png");
@@ -94,13 +94,13 @@ function drawMainMenu() {
 
 function loadingScreen() {
 	var loadingStage = new createjs.Stage("canvas");
-	var loadProgressLabel = new createjs.Text("LOADING","50px Chunk","black");
+	var loadProgressLabel = new createjs.Text("LOADING","50px Chunk","white");
 	loadProgressLabel.lineWidth = 200;
 	loadProgressLabel.textAlign = "center";
 	loadProgressLabel.x = loadingStage.canvas.width/2;
 	loadProgressLabel.y = loadingStage.canvas.height/2;
 
-	var pleaseWaitLabel = new createjs.Text("Please wait...", "24px Chunk", "black");
+	var pleaseWaitLabel = new createjs.Text("Please wait...", "24px Chunk", "white");
 	pleaseWaitLabel.x = loadProgressLabel.x - 80;
 	pleaseWaitLabel.y = loadProgressLabel.y + 100;
 

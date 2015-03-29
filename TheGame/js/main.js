@@ -42,6 +42,7 @@ function init(){
         {id: 'reload', src: 'resources/audio/Reload.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
         {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
+        {id: 'bgImg2', src: 'resources/pictures/background-2.jpg'},
         {id: 'bullet', src: 'resources/pictures/bullet.png'},
         {id: 'bird', src: 'resources/pictures/target2Bird.png'},
         {id: 'dead', src: 'resources/pictures/targetDie.png'}
@@ -69,7 +70,9 @@ function mainDraw() {
     //Create a Stage object to manipulate the canvas.
     stage = new createjs.Stage("canvas");
 
-    var bgImg = new createjs.Bitmap(queue.getResult('bgImg'));
+    var bgImg = new createjs.Bitmap(queue.getResult('bgImg2'));
+    bgImg.scaleX = 0.8;
+    bgImg.scaleY = 0.9;
     stage.addChild(bgImg);
 
     drawInitialBullets(); // bottom-right bullets
