@@ -2,7 +2,6 @@ function drawMainMenu() {
 	stage = new createjs.Stage("canvas");
 	stage.mouseMoveOutside = false;
 	stage.enableMouseOver(10);
-	stage.canvas.style.cursor = "none";
 
 	createjs.Sound.play('bgMusic');
 
@@ -14,13 +13,9 @@ function drawMainMenu() {
 	var menuCrosshair = new createjs.Bitmap(queue.getResult('crosshair'));
 	menuCrosshair.scaleX = 0.6;
 	menuCrosshair.scaleY = 0.6;
-   	menuCrosshair.x = -9999;
-   	menuCrosshair.y = -9999;
 
    	var menuBullet = new createjs.Bitmap("resources/pictures/menu-bullet.png");
     menuBullet.alpha = 0;
-    menuBullet.scaleX = 1;
-    menuBullet.scaleY = 1;
     stage.addChild(menuBullet);
 
     var titleText = new createjs.Text("SHOOT EM UP", "80px Chunk", "red");
@@ -76,10 +71,6 @@ function drawMainMenu() {
 
 	stage.addChild(menuCrosshair);
 
-   	function tick(event) {
- 		stage.update();
-	}
-
 	function moveHandler() {
    		menuCrosshair.x = stage.mouseX - 20;
    		menuCrosshair.y = stage.mouseY - 20;
@@ -87,7 +78,7 @@ function drawMainMenu() {
 
   	stage.addEventListener("stagemousemove", moveHandler);
 
-	createjs.Ticker.addEventListener("tick", tick);
+	createjs.Ticker.addEventListener("tick", stage);
 	createjs.Ticker.timingMode = createjs.Ticker.RAF;
  	createjs.Ticker.setFPS(60);
 }
