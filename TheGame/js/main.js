@@ -41,7 +41,6 @@ function init(){
         {id: 'reload', src: 'resources/audio/Reload.mp3'},
         {id: 'die', src: 'resources/audio/targetDead1HerringGull3Cut.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
-        {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
         {id: 'bgImg2', src: 'resources/pictures/background-2.jpg'},
         {id: 'bullet', src: 'resources/pictures/bullet.png'},
         {id: 'bird', src: 'resources/pictures/target2Bird.png'},
