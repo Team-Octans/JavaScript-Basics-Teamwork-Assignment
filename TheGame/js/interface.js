@@ -28,7 +28,7 @@ function drawClock() {
         seconds,
         minutes;
 
-    clock = new Date("January 1, 2015 00:00:04");
+    clock = new Date("January 1, 2015 00:02:00");
     
     function updateClock() {
         stage.removeChild(clockText, clockTextClone);
