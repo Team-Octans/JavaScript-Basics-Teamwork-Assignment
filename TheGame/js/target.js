@@ -107,7 +107,7 @@ function checkTargetHit(){
         stage.removeChild(targetAnimation);
         enemyDeath();
         playerScore = playerScore + 100;
-        playerScore = playerScore + 100;
+        createjs.Sound.play('die');
         setTimeout(
             function(){
                 stage.removeChild(targetDeadAnimation);
