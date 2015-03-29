@@ -2,7 +2,6 @@
 
 //Global variables
 var canvas,
-    ctx,
     cWidth,
     cHeight,
     stage,
@@ -31,12 +30,9 @@ function init(){
 
     canvas.oncontextmenu = function(event) { event.preventDefault() }; // blocks context menu in canvas
 
-    ctx = canvas.getContext('2d'); // Set to 2d drawing. ctx - means context
-                                       // We draw with this object
-
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
-    queue.on('complete', mainDraw, this);
+    queue.on('complete', drawMainMenu, this);
     queue.loadManifest([
         {id: 'bang', src: 'resources/audio/Gun_Shot.mp3'},
         {id: 'eject', src: 'resources/audio/Eject.mp3'},
@@ -64,13 +60,10 @@ window.addEventListener('load', init);
 //The main drawing function
 //This function will call all base components functions of the game.
 function mainDraw() {
-    //This is like a background of the background. It will load first
-    //call the ctx object to draw
-    ctx.font = "20px Verdana";
-    ctx.fillText("The Game!", 100, 80);
-
+    
     //Create a Stage object to manipulate the canvas.
     stage = new createjs.Stage("canvas");
+
     var bgImg = new createjs.Bitmap(queue.getResult('bgImg'));
     stage.addChild(bgImg);
 
