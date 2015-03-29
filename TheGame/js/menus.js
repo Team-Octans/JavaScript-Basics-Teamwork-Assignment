@@ -4,6 +4,8 @@ function drawMainMenu() {
 	stage.enableMouseOver(10);
 	stage.canvas.style.cursor = "none";
 
+	createjs.Sound.play('bgMusic');
+
 	var menuBackground = new createjs.Bitmap("resources/pictures/backgroundImg.jpg");
 	menuBackground.scaleX = 1;
 	menuBackground.scaleY = 1;

@@ -34,6 +34,7 @@ function init(){
     queue.installPlugin(createjs.Sound);
     queue.on('complete', drawMainMenu, this);
     queue.loadManifest([
+        {id: 'bgMusic', src: 'resources/audio/MusicBG.mp3'},
         {id: 'bang', src: 'resources/audio/Gun_Shot.mp3'},
         {id: 'eject', src: 'resources/audio/Eject.mp3'},
         {id: 'empty', src: 'resources/audio/Empty.mp3'},
