@@ -8,9 +8,8 @@ var canvas,
     queue,
     centerSpriteSheet,
     leftToRightSpriteSheet,
-    rightT0LeftSpriteSheet,
+    rightToLeftSpriteSheet,
     deadSpriteSheet,
-    targetIsDead_f,
     targetAnimation,
     targetDeadAnimation,
     targetXPos,
@@ -51,11 +50,10 @@ function init(){
 
     targetXPos = 60;
     targetYPos = 150;
-    targetSpeedX = 2;
-    targetSpeedY = 2;
-    targetWidth = 64;
-    targetHeight = 64;
-    targetIsDead_f = false;
+    targetSpeedX = 3;
+    targetSpeedY = 3;
+    targetWidth = targetHeight = 64;
+    explosionWidth = explosionHeight = 100;
 
 }
 //Call the init() function when it loads
