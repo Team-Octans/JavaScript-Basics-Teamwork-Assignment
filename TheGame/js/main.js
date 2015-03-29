@@ -40,6 +40,7 @@ function init(){
         {id: 'eject', src: 'resources/audio/Eject.mp3'},
         {id: 'empty', src: 'resources/audio/Empty.mp3'},
         {id: 'reload', src: 'resources/audio/Reload.mp3'},
+        {id: 'die', src: 'resources/audio/targetDead1HerringGull3Cut.mp3'},
         {id: 'crosshair', src: 'resources/pictures/crosshair.png'},
         {id: 'bgImg', src: 'resources/pictures/backgroundImg.jpg'},
         {id: 'bgImg2', src: 'resources/pictures/background-2.jpg'},

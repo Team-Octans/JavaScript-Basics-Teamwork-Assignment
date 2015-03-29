@@ -100,5 +100,9 @@ function checkTargetHit(){
     if((distX < 50 && distY < 50) && magazine.children.length !== 0) {
         targetIsDead_f = true;
         playerScore = playerScore + 100;
+        createjs.Sound.play('die');
+    }else {
+        playerScore = playerScore - 50;
     }
+
 }
