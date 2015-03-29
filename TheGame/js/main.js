@@ -60,6 +60,9 @@ window.addEventListener('load', init);
 //The main drawing function
 //This function will call all base components functions of the game.
 function mainDraw() {
+
+    stage.removeAllChildren();
+    stage.update();
     
     //Create a Stage object to manipulate the canvas.
     stage = new createjs.Stage("canvas");
