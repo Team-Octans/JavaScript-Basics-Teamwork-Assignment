@@ -99,5 +99,6 @@ function checkTargetHit(){
     // Anywhere in the body or head is a hit - but not the wings
     if((distX < 50 && distY < 50) && magazine.children.length !== 0) {
         targetIsDead_f = true;
+        playerScore = playerScore + 100;
     }
 }

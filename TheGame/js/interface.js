@@ -2,7 +2,8 @@ var magazine,
     capacity = 6,
     bullet,
     horizontalSpace,
-    clock;
+    clock
+    playerScore = 0;
 
 function drawInitialBullets() {
     magazine = new createjs.Container();
@@ -64,12 +65,12 @@ function drawClock() {
 }
 
 function drawScore() {
-    var playerScore = 0; // for now it is here
+    
     var playerScoreText;
     var playerScoreTextClone;
 
     function updateScore() {
-        stage.removeChild(playerScoreText);
+        stage.removeChild(playerScoreText,playerScoreTextClone);
         playerScoreText = new createjs.Text("Score: " + playerScore, "32px Chunk", "black");
         playerScoreText.x = 250;
         playerScoreText.y = stage.canvas.height - 70;
