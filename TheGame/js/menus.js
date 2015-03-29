@@ -18,9 +18,9 @@ function drawMainMenu() {
     menuBullet.alpha = 0;
     stage.addChild(menuBullet);
 
-    var titleText = new createjs.Text("SHOOT EM UP", "80px Chunk", "red");
-    titleText.x = 300;
-    titleText.y = 50;
+    var titleText = new createjs.Text("SHOOT THE BIRD", "80px Chunk", "red");
+    titleText.x = 250;
+    titleText.y = 70;
     titleText.shadow = new createjs.Shadow("black", 3,3,10);
     stage.addChild(titleText);
 
