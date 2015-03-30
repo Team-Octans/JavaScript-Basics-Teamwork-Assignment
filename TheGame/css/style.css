@@ -16,8 +16,7 @@ body {
 canvas {
     cursor: none;
     border: 1px solid black;
-    margin: auto;
-    margin-top:20px;
-    display: block;z
+    margin: 20px auto;
+    display: block;
     background-color: black;	/* for now */
 }
