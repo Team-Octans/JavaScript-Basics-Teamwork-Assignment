@@ -72,9 +72,9 @@ function drawMainMenu() {
 		tempBtn.shadow = new createjs.Shadow("black", 2, 2, 15);
 		vertSpace = vertSpace + 80;
 		var hitArea = new createjs.Shape();
-		hitArea.graphics.beginFill("#000").drawRect(0, 0, 
-			tempBtn.getMeasuredWidth() + 50, 
-			tempBtn.getMeasuredHeight());
+		hitArea.graphics.beginFill("#000").drawRect(-15, -15, 
+			150, 
+			30);
 		
 		tempBtn.hitArea = hitArea;
 		stage.addChild(tempBtn);
