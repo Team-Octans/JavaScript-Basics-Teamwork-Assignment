@@ -76,6 +76,7 @@ function mainDraw() {
     killCount = 0;
     shotCount = 0;
 
+    drawInfoWrapper();
     drawInitialBullets(); // bottom-right bullets
     drawClock();
     drawScore();

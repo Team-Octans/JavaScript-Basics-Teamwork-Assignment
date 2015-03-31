@@ -3,7 +3,9 @@ var magazine,
     bullet,
     horizontalSpace,
     clock,
-    playerScore = 0;
+    playerScore = 0,
+    scoreInterval,
+    clockInterval;
 
 function drawInitialBullets() {
     magazine = new createjs.Container();
@@ -16,7 +18,9 @@ function loadGun() {
     for (var i = 0; i < capacity; i++) {
         bullet = new createjs.Bitmap(queue.getResult('bullet'));
         bullet.x = stage.canvas.width - horizontalSpace;
-        bullet.y = stage.canvas.height - 100;
+        bullet.y = 10;
+        bullet.scaleX = 0.8;
+        bullet.scaleY = 0.6;
         horizontalSpace += 20;
         magazine.addChild(bullet);
     }
@@ -28,20 +32,12 @@ function drawClock() {
         seconds,
         minutes;
 
-    clock = new Date("January 1, 2015 00:02:00");
+    clock = new Date("January 1, 2015 00:01:00");
     
     function updateClock() {
         stage.removeChild(clockText, clockTextClone);
 
         if (seconds == 0 && minutes == "00") {
-            clockText = new createjs.Text("GAME OVER!", "32px Chunk", "black");
-            clockText.x = 650;
-            clockText.y = stage.canvas.height - 70;
-            clockText.outline = 5;
-            clockTextClone = clockText.clone();
-            clockTextClone.outline = false;
-            clockTextClone.color = "white";
-            stage.addChild(clockText,clockTextClone);
             gameOverScreen();
         }
         else {
@@ -52,7 +48,7 @@ function drawClock() {
 
             clockText = new createjs.Text("Time: " + minutes + ":" + seconds, "32px Chunk", "black");
             clockText.x = 700;
-            clockText.y = stage.canvas.height - 70;
+            clockText.y = 25;
             clockText.outline = 5;
 
             clockTextClone = clockText.clone();
@@ -62,7 +58,7 @@ function drawClock() {
 
         }
     }
-    setInterval(updateClock,1000);
+    clockInterval = setInterval(updateClock,1000);
 }
 
 function drawScore() {
@@ -73,8 +69,8 @@ function drawScore() {
     function updateScore() {
         stage.removeChild(playerScoreText, playerScoreTextClone);
         playerScoreText = new createjs.Text("Score: " + playerScore, "32px Chunk", "black");
-        playerScoreText.x = 250;
-        playerScoreText.y = stage.canvas.height - 70;
+        playerScoreText.x = 400;
+        playerScoreText.y = 25;
         playerScoreText.outline = 5;
         playerScoreTextClone = playerScoreText.clone();
         playerScoreTextClone.outline = false;
@@ -83,5 +79,13 @@ function drawScore() {
         stage.addChild(playerScoreTextClone);
     }
 
-    setInterval(updateScore,1000);
+    scoreInterval = setInterval(updateScore,1000);
+}
+
+function drawInfoWrapper() {
+    var infoWrapperBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(0, 0, stage.canvas.width, 80, 5);
+    var infoWrapperShape = new createjs.Shape(infoWrapperBox);
+    infoWrapperShape.alpha = 0.4;
+    infoWrapperShape.shadow = new createjs.Shadow("black", 3, 3, 10);
+    stage.addChild(infoWrapperShape);
 }

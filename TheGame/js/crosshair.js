@@ -7,6 +7,8 @@ var crosshair,
 
 function createCrosshair() {
     crosshair = new createjs.Bitmap(queue.getResult('crosshair'));
+    crosshair.scaleX = 0.7;
+    crosshair.scaleY = 0.7;
     stage.addChild(crosshair);
     stage.addEventListener('stagemousemove', moveCrosshair);
     stage.addEventListener('mousedown', handleClick);
