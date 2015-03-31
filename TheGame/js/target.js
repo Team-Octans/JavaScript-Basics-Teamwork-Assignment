@@ -110,6 +110,8 @@ function checkTargetHit(){
         enemyDeath();
         playerScore = playerScore + 100;
         killCount = killCount + 1;
+        targetSpeedX *= 1.04;
+        targetSpeedY *= 1.02;
         createjs.Sound.play('die');
         setTimeout(
             function(){
