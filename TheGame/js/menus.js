@@ -147,7 +147,7 @@ function gameOverScreen() {
 
  	var gameOverLabel = new createjs.Text("GAME OVER !!!", "30px Chunk", "white");
  	gameOverLabel.x = 440;
- 	gameOverLabel.y = 160;
+ 	gameOverLabel.y = 145;
  	gameOverLabel.shadow = new createjs.Shadow("black", 3, 3, 5);
  	stage.addChild(gameOverLabel);
 
@@ -158,33 +158,50 @@ function gameOverScreen() {
 				.endStroke();
 				stage.addChild(horzLine);
 
-	var scoreDisplay = new createjs.Text("Score: " + playerScore, "20px Chunk", "white");
-	scoreDisplay.x = 460;
-	scoreDisplay.y = 230;
-	scoreDisplay.shadow = new createjs.Shadow("black", 2, 2, 10);
-	stage.addChild(scoreDisplay);
+	function drawFinalScore() {
+		var scoreDisplay = new createjs.Text("Score: " + playerScore, "20px Chunk", "white");
+		scoreDisplay.x = 460;
+		scoreDisplay.y = 220;
+		scoreDisplay.shadow = new createjs.Shadow("black", 2, 2, 10);
+		stage.addChild(scoreDisplay);
+	}
 
-	var killCountText = new createjs.Text("Birds killed: " + killCount, "20px Chunk", "white");
-	killCountText.x = 460;
-	killCountText.y = 280;
-	killCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
-	stage.addChild(killCountText);
+	function drawFinalKillCount() {
+		var killCountText = new createjs.Text("Birds killed: " + killCount, "20px Chunk", "white");
+		killCountText.x = 460;
+		killCountText.y = 270;
+		killCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
+		stage.addChild(killCountText);
+	}
 
-	var shotCountText = new createjs.Text("Bullets used: " + shotCount, "20px Chunk", "white");
-	shotCountText.x = 460;
-	shotCountText.y = 330;
-	shotCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
-	stage.addChild(shotCountText);
+	function drawFinalShotCount() {
+		var shotCountText = new createjs.Text("Bullets used: " + shotCount, "20px Chunk", "white");
+		shotCountText.x = 460;
+		shotCountText.y = 320;
+		shotCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
+		stage.addChild(shotCountText);
+	}
 
 	var accuracy = (killCount / shotCount) * 100;
 	if (isNaN(accuracy)) {
 		accuracy = 0;
 	}
-	var accuracyText = new createjs.Text("Accuracy: " + accuracy.toFixed(2) + "%", "20px Chunk", "white");
-	accuracyText.x = 460;
-	accuracyText.y = 380;
-	accuracyText.shadow = new createjs.Shadow("black", 2, 2, 10);
-	stage.addChild(accuracyText);
+
+	function drawFinalAccuracy() {
+		var accuracyText = new createjs.Text("Accuracy: " + accuracy.toFixed(2) + "%", "20px Chunk", "white");
+		accuracyText.x = 460;
+		accuracyText.y = 370;
+		accuracyText.shadow = new createjs.Shadow("black", 2, 2, 10);
+		stage.addChild(accuracyText);
+	}
+
+	var statsArray = [drawFinalScore, drawFinalKillCount, drawFinalShotCount, drawFinalAccuracy];
+
+	var currTimeout = 500;
+	statsArray.forEach(function (func) {
+		setTimeout(func, currTimeout);
+		currTimeout = currTimeout + 500;
+	});
 
 	var backToMenuText = new createjs.Text("Press any key ...", "22px Chunk", "white");
 	backToMenuText.x = 460;
