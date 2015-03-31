@@ -46,7 +46,7 @@ function drawClock() {
             if (seconds < 10) { seconds = "0" + seconds;};
             minutes = clock.getMinutes();
 
-            clockText = new createjs.Text("Time: " + minutes + ":" + seconds, "32px Chunk", "black");
+            clockText = new createjs.Text("Time  " + minutes + ":" + seconds, "26px Chunk", "black");
             clockText.x = 700;
             clockText.y = 25;
             clockText.outline = 5;
@@ -68,8 +68,8 @@ function drawScore() {
 
     function updateScore() {
         stage.removeChild(playerScoreText, playerScoreTextClone);
-        playerScoreText = new createjs.Text("Score: " + playerScore, "32px Chunk", "black");
-        playerScoreText.x = 400;
+        playerScoreText = new createjs.Text("Score  " + playerScore, "26px Chunk", "black");
+        playerScoreText.x = 200;
         playerScoreText.y = 25;
         playerScoreText.outline = 5;
         playerScoreTextClone = playerScoreText.clone();

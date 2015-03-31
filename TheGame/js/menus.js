@@ -10,7 +10,7 @@ function drawMainMenu() {
 	menuBackground.scaleY = 0.9;
 	stage.addChild(menuBackground);
 
-	var mainMenuBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(430, 200, 300, 200, 25);
+	var mainMenuBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(430, 200, 308, 195, 25);
  	var mainMenuBoxShape = new createjs.Shape(mainMenuBox);
  	mainMenuBoxShape.alpha = 0.5;
  	mainMenuBoxShape.shadow = new createjs.Shadow("black", 3, 3, 5);
@@ -24,15 +24,20 @@ function drawMainMenu() {
     menuBullet.alpha = 0;
     stage.addChild(menuBullet);
 
-    var titleText = new createjs.Text("SHOOT THE BIRD", "80px Chunk", "red");
-    titleText.x = 250;
+    var titleText = new createjs.Text("SHOOT THE BIRD", "70px Chunk", "black");
+    titleText.x = 200;
     titleText.y = 70;
     titleText.shadow = new createjs.Shadow("black", 3,3,10);
     stage.addChild(titleText);
 
+    var titleTextOutline = titleText.clone();
+    titleTextOutline.outline = false;
+    titleTextOutline.color = "red";
+    stage.addChild(titleTextOutline);
+
 	var menuButtons = [
-		new createjs.Text("Start", "42px Chunk", "#FFFFFF"),
-		new createjs.Text("Credits", "38px Chunk", "#FFFFFF")
+		new createjs.Text("Start", "30px Chunk", "#FFFFFF"),
+		new createjs.Text("Credits", "24px Chunk", "#FFFFFF")
 	];
 
 	function onHover() {
@@ -72,7 +77,7 @@ function drawMainMenu() {
 	menuButtons[0].x = 525;
 	menuButtons[1].on("mouseover", onHover);
 	menuButtons[1].on("mouseout", onUnHover);
-	menuButtons[1].x = 510;
+	menuButtons[1].x = 517;
 
 	stage.addChild(menuCrosshair);
 
@@ -91,19 +96,19 @@ function drawMainMenu() {
 function loadingScreen() {
 	var loadingStage = new createjs.Stage("canvas");
 
-	var loadingTitle = new createjs.Text("SHOOT THE BIRD", "80px Chunk", "red");
-    loadingTitle.x = 250;
+	var loadingTitle = new createjs.Text("SHOOT THE BIRD", "70px Chunk", "red");
+    loadingTitle.x = 200;
     loadingTitle.y = 70;
     loadingTitle.shadow = new createjs.Shadow("black", 3,3,10);
 
-	var loadProgressLabel = new createjs.Text("LOADING","50px Chunk","white");
+	var loadProgressLabel = new createjs.Text("LOADING","40px Chunk","white");
 	loadProgressLabel.lineWidth = 200;
 	loadProgressLabel.textAlign = "center";
 	loadProgressLabel.x = loadingStage.canvas.width/2;
 	loadProgressLabel.y = loadingStage.canvas.height/2;
 
-	var pleaseWaitLabel = new createjs.Text("Please wait...", "24px Chunk", "white");
-	pleaseWaitLabel.x = loadProgressLabel.x - 80;
+	var pleaseWaitLabel = new createjs.Text("Please wait...", "18px Chunk", "white");
+	pleaseWaitLabel.x = loadProgressLabel.x - 100;
 	pleaseWaitLabel.y = loadProgressLabel.y + 100;
 
 	loadingStage.addChild(loadProgressLabel,pleaseWaitLabel,loadingTitle);
@@ -131,33 +136,33 @@ function gameOverScreen() {
  	gameOverBoxShape.shadow = new createjs.Shadow("black", 3, 3, 10);
  	stage.addChild(gameOverBoxShape);
 
- 	var gameOverLabel = new createjs.Text("GAME OVER !!!", "38px Chunk", "white");
- 	gameOverLabel.x = 450;
+ 	var gameOverLabel = new createjs.Text("GAME OVER !!!", "30px Chunk", "white");
+ 	gameOverLabel.x = 440;
  	gameOverLabel.y = 160;
  	gameOverLabel.shadow = new createjs.Shadow("black", 3, 3, 5);
  	stage.addChild(gameOverLabel);
 
  	var horzLine = new createjs.Shape();
  	horzLine.graphics.beginStroke("white")
-				.moveTo(420, 430)
-				.lineTo(770, 430)
+				.moveTo(420, 420)
+				.lineTo(770, 420)
 				.endStroke();
 				stage.addChild(horzLine);
 
-	var scoreDisplay = new createjs.Text("Score: " + playerScore, "26px Chunk", "white");
-	scoreDisplay.x = 480;
+	var scoreDisplay = new createjs.Text("Score: " + playerScore, "20px Chunk", "white");
+	scoreDisplay.x = 460;
 	scoreDisplay.y = 230;
 	scoreDisplay.shadow = new createjs.Shadow("black", 2, 2, 10);
 	stage.addChild(scoreDisplay);
 
-	var killCountText = new createjs.Text("Birds killed: " + killCount, "26px Chunk", "white");
-	killCountText.x = 480;
+	var killCountText = new createjs.Text("Birds killed: " + killCount, "20px Chunk", "white");
+	killCountText.x = 460;
 	killCountText.y = 280;
 	killCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
 	stage.addChild(killCountText);
 
-	var shotCountText = new createjs.Text("Bullets used: " + shotCount, "26px Chunk", "white");
-	shotCountText.x = 480;
+	var shotCountText = new createjs.Text("Bullets used: " + shotCount, "20px Chunk", "white");
+	shotCountText.x = 460;
 	shotCountText.y = 330;
 	shotCountText.shadow = new createjs.Shadow("black", 2, 2, 10);
 	stage.addChild(shotCountText);
@@ -166,15 +171,15 @@ function gameOverScreen() {
 	if (isNaN(accuracy)) {
 		accuracy = 0;
 	}
-	var accuracyText = new createjs.Text("Accuracy: " + accuracy.toFixed(2) + "%", "26px Chunk", "white");
-	accuracyText.x = 480;
+	var accuracyText = new createjs.Text("Accuracy: " + accuracy.toFixed(2) + "%", "20px Chunk", "white");
+	accuracyText.x = 460;
 	accuracyText.y = 380;
 	accuracyText.shadow = new createjs.Shadow("black", 2, 2, 10);
 	stage.addChild(accuracyText);
 
-	var backToMenuText = new createjs.Text("Press any key ...", "32px Chunk", "white");
-	backToMenuText.x = 480;
-	backToMenuText.y = 450;
+	var backToMenuText = new createjs.Text("Press any key ...", "22px Chunk", "white");
+	backToMenuText.x = 460;
+	backToMenuText.y = 445;
 	backToMenuText.shadow = new createjs.Shadow("black", 3, 3, 15);
 	stage.addChild(backToMenuText);
 
