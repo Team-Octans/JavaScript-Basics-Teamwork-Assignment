@@ -18,7 +18,7 @@ function loadGun() {
     for (var i = 0; i < capacity; i++) {
         bullet = new createjs.Bitmap(queue.getResult('bullet'));
         bullet.x = stage.canvas.width - horizontalSpace;
-        bullet.y = 10;
+        bullet.y = stage.canvas.height - 70;
         bullet.scaleX = 0.8;
         bullet.scaleY = 0.6;
         horizontalSpace += 20;
@@ -48,7 +48,7 @@ function drawClock() {
 
             clockText = new createjs.Text("Time  " + minutes + ":" + seconds, "26px Chunk", "black");
             clockText.x = 700;
-            clockText.y = 25;
+            clockText.y = stage.canvas.height - 50;
             clockText.outline = 5;
 
             clockTextClone = clockText.clone();
@@ -70,7 +70,7 @@ function drawScore() {
         stage.removeChild(playerScoreText, playerScoreTextClone);
         playerScoreText = new createjs.Text("Score  " + playerScore, "26px Chunk", "black");
         playerScoreText.x = 200;
-        playerScoreText.y = 25;
+        playerScoreText.y = stage.canvas.height - 50;
         playerScoreText.outline = 5;
         playerScoreTextClone = playerScoreText.clone();
         playerScoreTextClone.outline = false;
@@ -83,7 +83,8 @@ function drawScore() {
 }
 
 function drawInfoWrapper() {
-    var infoWrapperBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(0, 0, stage.canvas.width, 80, 5);
+    var infoWrapperBox = new createjs.Graphics().beginFill("darkred")
+                        .drawRoundRect(0, stage.canvas.height - 80, stage.canvas.width, 80, 5);
     var infoWrapperShape = new createjs.Shape(infoWrapperBox);
     infoWrapperShape.alpha = 0.4;
     infoWrapperShape.shadow = new createjs.Shadow("black", 3, 3, 10);
