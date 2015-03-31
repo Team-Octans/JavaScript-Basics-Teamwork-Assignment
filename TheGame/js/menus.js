@@ -24,6 +24,13 @@ function drawMainMenu() {
     menuBullet.alpha = 0;
     stage.addChild(menuBullet);
 
+    var footerText = new createjs.Text("© 2015   TEAM OCTANS @ SOFTWARE UNIVERSITY", 
+    									"20px Chunk", "white");
+    footerText.x = 250;
+    footerText.y = stage.canvas.height - 50;
+    footerText.shadow = new createjs.Shadow("black", 5, 5, 10);
+    stage.addChild(footerText);
+
     var titleText = new createjs.Text("SHOOT THE BIRD", "70px Chunk", "black");
     titleText.x = 200;
     titleText.y = 70;
@@ -46,12 +53,14 @@ function drawMainMenu() {
 		menuBullet.y = this.y + 6;
 		this.shadow = new createjs.Shadow("black", 2, 2, 15);
 		this.color = "yellow";
+		menuCrosshair.alpha = 0.6;
 	}
 
 	function onUnHover() {
 		menuBullet.alpha = 0;
 		this.color = "white";
 		this.shadow = new createjs.Shadow("black", 2, 2, 15);
+		menuCrosshair.alpha = 1;
 	}
 
 	var vertSpace = 240;
@@ -65,7 +74,7 @@ function drawMainMenu() {
 		var hitArea = new createjs.Shape();
 		hitArea.graphics.beginFill("#000").drawRect(0, 0, 
 			tempBtn.getMeasuredWidth() + 50, 
-			tempBtn.getMeasuredHeight() + 20);
+			tempBtn.getMeasuredHeight());
 		
 		tempBtn.hitArea = hitArea;
 		stage.addChild(tempBtn);
