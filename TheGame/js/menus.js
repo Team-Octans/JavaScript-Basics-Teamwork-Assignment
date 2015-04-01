@@ -1,5 +1,14 @@
 function drawMainMenu() {
-	//window.removeEventListener("keypress", finish, false);
+	window.removeEventListener("keydown", function finish() {
+	    playerScore = 0;
+    	killCount = 0;
+    	shotCount = 0;
+    	createjs.Sound.stop('bgMusic');
+    	stage.removeAllChildren();
+    	createjs.Ticker.removeAllEventListeners();
+    	stage.update();
+	    init();
+	}, true);
 
 	stage = new createjs.Stage("canvas");
 	stage.mouseMoveOutside = false;
@@ -231,7 +240,7 @@ function gameOverScreen() {
 	    init();
 	}
 
-	window.addEventListener("keypress",	finish, false);
+	window.addEventListener("keydown", finish, true);
 }
 
 function drawInfoScreen() {
@@ -284,8 +293,8 @@ function drawInfoScreen() {
  	infoTextSix.alpha = 1;
  	stage.addChild(infoTextSix);
 
-	window.addEventListener("keypress",	function() {
+	window.addEventListener("keydown", function() {
     	stage.removeChild(infoBoxShape, infoTextOne, infoTextTwo, infoTextThree, 
     						infoTextFour, infoTextFive,infoTextSix);
-	}, false );
+	}, true );
 }

@@ -29,6 +29,9 @@ function init(){
 
     canvas.oncontextmenu = function(event) { event.preventDefault() }; // blocks context menu in canvas
 
+    canvas.setAttribute('tabindex','0');
+	canvas.focus();
+
     queue = new createjs.LoadQueue(false);
     queue.installPlugin(createjs.Sound);
     queue.on('progress', loadingScreen, this);
