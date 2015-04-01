@@ -1,4 +1,6 @@
 function drawMainMenu() {
+	//window.removeEventListener("keypress", finish, false);
+
 	stage = new createjs.Stage("canvas");
 	stage.mouseMoveOutside = false;
 	stage.enableMouseOver(10);
@@ -10,7 +12,7 @@ function drawMainMenu() {
 	menuBackground.scaleY = 0.9;
 	stage.addChild(menuBackground);
 
-	var mainMenuBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(430, 200, 308, 195, 25);
+	var mainMenuBox = new createjs.Graphics().beginFill("darkred").drawRoundRect(430, 200, 308, 270, 25);
  	var mainMenuBoxShape = new createjs.Shape(mainMenuBox);
  	mainMenuBoxShape.alpha = 0.5;
  	mainMenuBoxShape.shadow = new createjs.Shadow("black", 3, 3, 5);
@@ -44,7 +46,8 @@ function drawMainMenu() {
 
 	var menuButtons = [
 		new createjs.Text("Start", "30px Chunk", "#FFFFFF"),
-		new createjs.Text("Credits", "24px Chunk", "#FFFFFF")
+		new createjs.Text("Info", "28px Chunk", "#FFFFFF"),
+		new createjs.Text("Credits", "28px Chunk", "#FFFFFF")
 	];
 
 	function onHover() {
@@ -86,7 +89,8 @@ function drawMainMenu() {
 	menuButtons[0].x = 525;
 	menuButtons[1].on("mouseover", onHover);
 	menuButtons[1].on("mouseout", onUnHover);
-	menuButtons[1].x = 517;
+	menuButtons[1].	on("click", drawInfoScreen);
+	menuButtons[1].x = 535;
 
 	stage.addChild(menuCrosshair);
 
@@ -221,8 +225,67 @@ function gameOverScreen() {
     	killCount = 0;
     	shotCount = 0;
     	createjs.Sound.stop('bgMusic');
+    	stage.removeAllChildren();
+    	createjs.Ticker.removeAllEventListeners();
+    	stage.update();
 	    init();
 	}
 
-	document.onkeypress = finish;
+	window.addEventListener("keypress",	finish, false);
+}
+
+function drawInfoScreen() {
+	var infoBox = new createjs.Graphics().beginFill("darkred")
+					.drawRoundRect(100, 170, 1000, 350, 25);
+ 	var infoBoxShape = new createjs.Shape(infoBox);
+ 	infoBoxShape.alpha = 1;
+ 	infoBoxShape.shadow = new createjs.Shadow("black", 3, 3, 10);
+ 	stage.addChild(infoBoxShape);
+
+ 	var infoTextStringOne = "You have one minute to kill as many birds as possible!";
+ 	var infoTextOne = new createjs.Text(infoTextStringOne, "18px Chunk", "white");
+ 	infoTextOne.x = 200;
+ 	infoTextOne.y = 200;
+ 	infoTextOne.alpha = 1;
+ 	stage.addChild(infoTextOne);
+
+ 	var infoTextStringTwo = "Beware though - each miss will cost you 50 points";
+ 	var infoTextTwo = new createjs.Text(infoTextStringTwo, "18px Chunk", "white");
+ 	infoTextTwo.x = 230;
+ 	infoTextTwo.y = 250;
+ 	infoTextTwo.alpha = 1;
+ 	stage.addChild(infoTextTwo);
+
+	var infoTextStringThree = "Use the mouse - left-click shoots, right-click reloads";
+ 	var infoTextThree = new createjs.Text(infoTextStringThree, "18px Chunk", "white");
+ 	infoTextThree.x = 200;
+ 	infoTextThree.y = 300;
+ 	infoTextThree.alpha = 1;
+ 	stage.addChild(infoTextThree); 
+
+ 	var infoTextStringFour = "every killed bird will make the rest fly little faster!";
+ 	var infoTextFour = new createjs.Text(infoTextStringFour, "18px Chunk", "white");
+ 	infoTextFour.x = 190;
+ 	infoTextFour.y = 350;
+ 	infoTextFour.alpha = 1;
+ 	stage.addChild(infoTextFour);
+
+ 	var infoTextStringFive = "enjoy your blue bird genocide!";
+ 	var infoTextFive = new createjs.Text(infoTextStringFive, "22px Chunk", "white");
+ 	infoTextFive.x = 310;
+ 	infoTextFive.y = 400;
+ 	infoTextFive.alpha = 1;
+ 	stage.addChild(infoTextFive);
+
+	var infoTextStringSix = "press any key to close this ...";
+ 	var infoTextSix = new createjs.Text(infoTextStringSix, "18px Chunk", "white");
+ 	infoTextSix.x = 350;
+ 	infoTextSix.y = 470;
+ 	infoTextSix.alpha = 1;
+ 	stage.addChild(infoTextSix);
+
+	window.addEventListener("keypress",	function() {
+    	stage.removeChild(infoBoxShape, infoTextOne, infoTextTwo, infoTextThree, 
+    						infoTextFour, infoTextFive,infoTextSix);
+	}, false );
 }
