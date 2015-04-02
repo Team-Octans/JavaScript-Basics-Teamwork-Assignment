@@ -110,6 +110,7 @@ function checkTargetHit(){
         enemyDeath();
         playerScore = playerScore + 100;
         killCount = killCount + 1;
+        drawScore();
         targetSpeedX *= 1.04;
         targetSpeedY *= 1.02;
         createjs.Sound.play('die');
@@ -131,6 +132,7 @@ function checkTargetHit(){
     } else {
         if(playerScore>0) {
             playerScore = playerScore - 50;
+            drawScore();
         }
     }
 }

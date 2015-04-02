@@ -6,6 +6,8 @@ var magazine,
     playerScore = 0,
     scoreInterval,
     clockInterval;
+    var playerScoreText;
+    var playerScoreTextClone;
 
 function drawInitialBullets() {
     magazine = new createjs.Container();
@@ -48,7 +50,7 @@ function drawClock() {
 
             clockText = new createjs.Text("Time  " + minutes + ":" + seconds, "26px Chunk", "black");
             clockText.x = 700;
-            clockText.y = stage.canvas.height - 50;
+            clockText.y = stage.canvas.height - 55;
             clockText.outline = 5;
 
             clockTextClone = clockText.clone();
@@ -62,31 +64,26 @@ function drawClock() {
 }
 
 function drawScore() {
-    
-    var playerScoreText;
-    var playerScoreTextClone;
 
-    function updateScore() {
-        stage.removeChild(playerScoreText, playerScoreTextClone);
-        playerScoreText = new createjs.Text("Score  " + playerScore, "26px Chunk", "black");
-        playerScoreText.x = 200;
-        playerScoreText.y = stage.canvas.height - 50;
-        playerScoreText.outline = 5;
-        playerScoreTextClone = playerScoreText.clone();
-        playerScoreTextClone.outline = false;
-        playerScoreTextClone.color = "white";
-        stage.addChild(playerScoreText);
-        stage.addChild(playerScoreTextClone);
-    }
+    stage.removeChild(playerScoreText, playerScoreTextClone);
+    playerScoreText = new createjs.Text("Score  " + playerScore, "26px Chunk", "black");
+    playerScoreText.x = 200;
+    playerScoreText.y = stage.canvas.height - 55;
+    playerScoreText.outline = 5;
+    playerScoreTextClone = playerScoreText.clone();
+    playerScoreTextClone.outline = false;
+    playerScoreTextClone.color = "white";
+    stage.addChild(playerScoreText);
+    stage.addChild(playerScoreTextClone);
 
-    scoreInterval = setInterval(updateScore,1000);
+    //scoreInterval = setInterval(updateScore,1000);
 }
 
 function drawInfoWrapper() {
     var infoWrapperBox = new createjs.Graphics().beginFill("darkred")
                         .drawRoundRect(0, stage.canvas.height - 80, stage.canvas.width, 80, 5);
     var infoWrapperShape = new createjs.Shape(infoWrapperBox);
-    infoWrapperShape.alpha = 0.4;
+    infoWrapperShape.alpha = 0.6;
     infoWrapperShape.shadow = new createjs.Shadow("black", 3, 3, 10);
     stage.addChild(infoWrapperShape);
 }

@@ -1,14 +1,6 @@
 function drawMainMenu() {
-	window.removeEventListener("keydown", function finish() {
-	    playerScore = 0;
-    	killCount = 0;
-    	shotCount = 0;
-    	createjs.Sound.stop('bgMusic');
-    	stage.removeAllChildren();
-    	createjs.Ticker.removeAllEventListeners();
-    	stage.update();
-	    init();
-	}, true);
+
+	window.removeEventListener("keydown", finish, true);
 
 	stage = new createjs.Stage("canvas");
 	stage.mouseMoveOutside = false;
@@ -16,7 +8,7 @@ function drawMainMenu() {
 
 	createjs.Sound.play('bgMusic');
 
-	var menuBackground = new createjs.Bitmap("resources/pictures/background-2.jpg");
+	var menuBackground = new createjs.Bitmap(queue.getResult('bgImg2'));
 	menuBackground.scaleX = 0.8;
 	menuBackground.scaleY = 0.9;
 	stage.addChild(menuBackground);
@@ -26,6 +18,20 @@ function drawMainMenu() {
  	mainMenuBoxShape.alpha = 0.5;
  	mainMenuBoxShape.shadow = new createjs.Shadow("black", 3, 3, 5);
  	stage.addChild(mainMenuBoxShape);
+
+ 	var hunterPic = new createjs.Bitmap(queue.getResult('menuHunter'));
+ 	hunterPic.x = 180;
+ 	hunterPic.y = 190;
+ 	hunterPic.scaleX = 1.2;
+ 	hunterPic.scaleY = 1.2;
+ 	hunterPic.shadow = new createjs.Shadow("black", 1, 1, 15);
+ 	stage.addChild(hunterPic);
+
+ 	var menuBird = new createjs.Bitmap(queue.getResult('menuBird'));
+ 	menuBird.x = stage.canvas.width - 390;
+ 	menuBird.y = 260;
+ 	menuBird.shadow = new createjs.Shadow("white", 1, 1, 15);
+ 	stage.addChild(menuBird);
 
 	var menuCrosshair = new createjs.Bitmap(queue.getResult('crosshair'));
 	menuCrosshair.scaleX = 0.6;
@@ -139,7 +145,7 @@ function loadingScreen() {
 
 function gameOverScreen() {
 
-	clearInterval(scoreInterval);
+	//clearInterval(scoreInterval);
 	clearInterval(clockInterval);
 
 	stage.removeAllChildren();
@@ -229,18 +235,18 @@ function gameOverScreen() {
 		
 		backToMenuText.hitArea = backToMenuHitArea;
 
-	function finish() {
-	    playerScore = 0;
-    	killCount = 0;
-    	shotCount = 0;
-    	createjs.Sound.stop('bgMusic');
-    	stage.removeAllChildren();
-    	createjs.Ticker.removeAllEventListeners();
-    	stage.update();
-	    init();
-	}
-
 	window.addEventListener("keydown", finish, true);
+}
+
+function finish() {
+    playerScore = 0;
+	killCount = 0;
+	shotCount = 0;
+	createjs.Sound.stop('bgMusic');
+	stage.removeAllChildren();
+	createjs.Ticker.removeAllEventListeners();
+	stage.update();
+    init();
 }
 
 function drawInfoScreen() {

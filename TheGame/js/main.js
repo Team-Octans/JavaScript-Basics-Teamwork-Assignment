@@ -47,7 +47,9 @@ function init(){
         {id: 'bgImg2', src: 'resources/pictures/background-2.jpg'},
         {id: 'bullet', src: 'resources/pictures/bullet.png'},
         {id: 'bird', src: 'resources/pictures/target2Bird.png'},
-        {id: 'dead', src: 'resources/pictures/targetDie.png'}
+        {id: 'dead', src: 'resources/pictures/targetDie.png'},
+        {id: 'menuHunter', src: 'resources/pictures/funnyhunter.gif'},
+        {id: 'menuBird', src: 'resources/pictures/menu-bird.png'}
     ]);
 
     targetXPos = 60;
@@ -73,7 +75,9 @@ function mainDraw() {
 
     var bgImg = new createjs.Bitmap(queue.getResult('bgImg2'));
     bgImg.scaleX = 0.8;
-    bgImg.scaleY = 0.9;
+    bgImg.scaleY = 0.8;
+    bgImg.x = 0;
+    bgImg.y = -70;
     stage.addChild(bgImg);
 
     killCount = 0;
